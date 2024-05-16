@@ -8,7 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PaymentController {
 
     @GetMapping
-    public String index() {
-        return "index";
+    public String twLanding() {
+        return "twlanding";
+    }
+    @GetMapping("/pay")
+    public String twPayments() {
+        return "twpayments";
+    }
+    @GetMapping("/transactions")
+    public String twTransactions() {
+        return "twtransactions";
+    }
+    @GetMapping("/qr")
+    public String twQrread() {
+        return "twqrread";
     }
 }

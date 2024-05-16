@@ -4312,6 +4312,9 @@ textarea.form-control-lg {
   .card-group > .card:not(:last-child) .card-header {
     border-top-right-radius: 0;
   }
+  .logo {
+    height: 90px;
+  }
   .card-group > .card:not(:last-child) .card-img-bottom,
   .card-group > .card:not(:last-child) .card-footer {
     border-bottom-right-radius: 0;
