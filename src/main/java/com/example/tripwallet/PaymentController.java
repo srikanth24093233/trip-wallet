@@ -25,6 +25,11 @@ public class PaymentController {
     }
     @GetMapping("/qr")
     public String twQrread() {
+        try{
+            new GenerateQRCode().generate();
+        }catch(Exception e){
+         //
+        }
         return "twqrread";
     }
 }

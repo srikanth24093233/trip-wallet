@@ -23,7 +23,13 @@ domReady(function () {
 
     // If found you qr code
     function onScanSuccess(decodeText, decodeResult) {
-        alert("You Qr is : " + decodeText, decodeResult);
+       // alert("You Qr is : " + decodeText, decodeResult);
+        try{
+            document.getElementsByClassName("qrhead")[0].style.display='none';
+            document.getElementsByClassName("paymentFields")[0].style.display='block';
+        }catch(e) {
+            console.log(e)
+        }
     }
 
     let htmlscanner = new Html5QrcodeScanner(
