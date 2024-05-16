@@ -17,8 +17,12 @@
 .paymentFields {
     display: none;
 }
-.paymentSuccess{
-    align-self: center;
+.paymentSuccess {
+    padding-left: 100px;
+    display: none;
+}
+.paymentSuccess .imgsuccess {
+    padding-left: 46px;
 }
 #my-qr-reader {
     padding: 20px !important;

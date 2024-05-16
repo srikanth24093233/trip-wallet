@@ -38,3 +38,8 @@ domReady(function () {
     );
     htmlscanner.render(onScanSuccess);
 });
+
+function hidePay(){
+    document.getElementsByClassName("paymentFields")[0].style.display='none';
+    document.getElementsByClassName("paymentSuccess")[0].style.display='block';
+}
