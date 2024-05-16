@@ -13,7 +13,7 @@ public class PaymentController {
     @GetMapping
     public ModelAndView twLanding(Map<String, Object> model) {
         model.put("index", "Trip Summary");
-        return new ModelAndView("twlanding",model);
+        return new ModelAndView("hotelReservationDetails",model);
     }
     @GetMapping("/pay")
     public String twPayments() {
