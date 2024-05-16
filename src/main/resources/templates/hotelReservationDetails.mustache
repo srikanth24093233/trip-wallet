@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Marriott Bonvoy</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+       <script src="scripts/scripts.js"></script>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!"><img src="logo.png" height="90px"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">My Trips</a></li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            John
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">JW MARRIOTT DESERT SPRINGS RESORT & SPA</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="reservation-container">
+                <p><i class="fas fa-calendar-alt"></i> <strong> 16 May - 18 May</strong> 16 May 2024</p>
+                <p><strong> King Suite</strong></p>
+                <p><i class="fas fa-dollar-sign"></i> <strong> Total Price:</strong> 220 USD</p>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#walletModal">
+                    <i class="fas fa-wallet"></i> BonVoY T{r}IP WALLET
+                </button>
+            </div>
+            <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">  <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="walletModalLabel"> BonVoY T{r}IP WALLET ID# W12345</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="#summary" class="nav-link active" data-bs-toggle="tab" role="tab" aria-selected="true">Summary</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#instruments" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Instruments</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#transactions" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Transactions</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#pay" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Pay</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <section class="tab-pane active" id="summary">
+                                <div class="container px-4 px-lg-5 mt-5">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Authorized Amount</th>
+                                            <th scope="col">Cash</th>
+                                            <th scope="col">Points</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><i class="fas"> Used</i>  </td>
+                                            <td><i class="fas fa-dollar-sign"> $100.00</i>  </td>
+                                            <td>1000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-dollar-sign"> Balance</i> </td>
+                                            <td><i class="fas fa-dollar-sign"> $10.00</i> </td>
+                                            <td>5000</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <h5 style="padding: 5px 10px; border-radius: 5px;">
+                                        <p class="text-muted">Total Authorization: <i class="fas fa-star fa-dollar-sign"> $110.00</i> </p>
+                                    </h5>
+                                    <h4 style="background-color: rgba(220, 248, 220, 0.3); padding: 5px 10px; border-radius: 5px;">
+                                        <p class="text-muted">Points Earning Potential: <i class="fas fa-star"> 2500</i></p>
+                                    </h4>
+                                </div>
+                            </section>
+                            <section class="tab-pane" id="instruments">
+                                <p>List of your instruments (crypto, stocks, etc.)</p>
+                            </section>
+                            <section class="tab-pane" id="transactions">
+                                <p>Your recent transactions will be displayed here.</p>
+                            </section>
+                            <section class="tab-pane" id="pay">
+                                <p>Options for making payments using your wallet.</p>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Developed by Commerce Wizards for Codefest 2.0</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
