@@ -44,7 +44,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="reservation-container">
-                <p><i class="fas fa-calendar-alt"></i> <strong> 16 May - 18 May</strong> 16 May 2024</p>
+                <p><i class="fas fa-calendar-alt"></i> <strong> 16 May - 18 May</strong></p>
                 <p><strong> King Suite</strong></p>
                 <p><i class="fas fa-dollar-sign"></i> <strong> Total Price:</strong> 220 USD</p>
                 <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#walletModal">
@@ -95,17 +95,49 @@
                                             <td>5000</td>
                                         </tr>
                                         </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th scope="col">Total</th>
+                                                <th scope="col"><i class="fas fa-dollar-sign"></i> $110.00</th>
+                                                <th scope="col">6000</th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
-                                    <h5 style="padding: 5px 10px; border-radius: 5px;">
-                                        <p class="text-muted">Total Authorization: <i class="fas fa-star fa-dollar-sign"> $110.00</i> </p>
-                                    </h5>
                                     <h4 style="background-color: rgba(220, 248, 220, 0.3); padding: 5px 10px; border-radius: 5px;">
                                         <p class="text-muted">Points Earning Potential: <i class="fas fa-star"> 2500</i></p>
                                     </h4>
                                 </div>
                             </section>
                             <section class="tab-pane" id="instruments">
-                                <p>List of your instruments (crypto, stocks, etc.)</p>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fab fa-cc-visa fs-4 me-2 text-primary"></i>
+                                            <div>
+                                                <p class="mb-0">Visa ending in 4567 </p>
+                                                <span class="badge bg-primary rounded-pill"> $100 Authorized</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fab fa-cc-amex fs-4 me-2 text-blue"></i>
+                                            <div>
+                                                <p class="mb-0">Amex ending in 6789 </p>
+                                                <span class="badge bg-primary rounded-pill"> $10 Authorized</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fab fa-cc-amex fs-4 me-2 text-blue"></i>
+                                            <div>
+                                                <p class="mb-0">Bonvoy Points </p>
+                                                <span class="badge bg-primary rounded-pill"> 6,000 Points Authorized</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </section>
                             <section class="tab-pane" id="transactions">
                                 <p>Your recent transactions will be displayed here.</p>
