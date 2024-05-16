@@ -1,15 +1,19 @@
 package com.example.tripwallet;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
 public class PaymentController {
 
     @GetMapping
-    public String twLanding() {
-        return "twlanding";
+    public ModelAndView twLanding(Map<String, Object> model) {
+        model.put("index", "Trip Summary");
+        return new ModelAndView("twlanding",model);
     }
     @GetMapping("/pay")
     public String twPayments() {
