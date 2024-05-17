@@ -66,3 +66,13 @@ function showPay(){
     document.getElementsByClassName("paymentSuccess")[0].style.display='none';
     document.getElementsByClassName("qrhead")[0].style.display='block';
 }
+
+function walletTopUp(){
+    document.getElementsByClassName("wallet-top-up-div")[0].style.display='none';
+    document.getElementsByClassName("topupsuccess")[0].style.display='block';
+}
+
+function showWalletTopUp(){
+    document.getElementsByClassName("wallet-top-up-div")[0].style.display='block';
+    document.getElementsByClassName("topupsuccess")[0].style.display='none';
+}

@@ -75,7 +75,7 @@
                                 <a href="#instruments" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Payment Source</a>
                             </li-->
                             <li class="nav-item" role="presentation">
-                                <a href="#wallet-top-up" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Top Up</a>
+                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Top Up</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="#wallet-top-up-budget" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Trip Budget</a>
@@ -127,7 +127,7 @@
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center">
-                                            <i class="fab fa-cc-visa fs-4 me-2 text-primary"></i>
+                                            <i class="fab fs-4 me-2 text-primary"><img src="giftcard.png"/> </i>
                                             <div>
                                                 <p class="mb-0">Visa ending in 4567 </p>
                                                 <span class="badge bg-primary rounded-pill"> $100 Authorized</span>
@@ -228,26 +228,21 @@
                                 </div>
                             </section>
                             <section class="tab-pane" id="wallet-top-up">
+                                <div class="wallet-top-up-div">
                                 <form name="paymentForm">
                                 <fieldset class="d-flex flex-wrap">
-                                    <legend>Form of Payments</legend>
+                                    <legend>Marriott Money</legend>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-center">
                                             <input type="radio" id="paymentVisa" name="paymentMethod" value="visa" checked>
                                             <label for="paymentVisa" class="ms-2">
-                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in 4567  <span class="badge bg-primary rounded-pill">Authorized: $100</span>
-                                            </label>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentAmex1" name="paymentMethod" value="amex">
-                                            <label for="paymentAmex1" class="ms-2">
-                                                <i class="fab fa-cc-amex fs-4 text-blue"></i> ending in 6789  <span class="badge bg-primary rounded-pill">Authorized: $10</span>
+                                                <i class="fab fs-4 me-2 text-primary"><img height="20px" width="20px" src="giftcard.png"/> </i> giftcard ending in 4567  <span class="badge bg-primary rounded-pill">Available: $100</span>
                                             </label>
                                         </li>
                                         <li class="list-group-item d-flex align-items-center">
                                             <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
                                             <label for="paymentBonvoy" class="ms-2">
-                                                <i class="fab fs-4 text-blue"></i> Bonvoy Points  <span class="badge bg-primary rounded-pill">Authorized: 6,000 Points</span>
+                                                <i class="fab fs-4 text-blue"></i> Bonvoy Points  <span class="badge bg-primary rounded-pill">Available: 6,000 Points</span>
                                             </label>
                                         </li>
                                     </ul>
@@ -255,9 +250,18 @@
 
                                 <div class="mt-3 d-flex flex-column align-items-center">
                                     <input type="text" class="form-control mb-2" placeholder="Enter the value for top-up">
-                                    <button type="button" class="btn btn-primary">Top Up</button>
+                                    <button type="button" onClick="walletTopUp()" class="btn btn-primary">Top Up</button>
                                 </div>
                                 </form>
+                                </div>
+                                <div class="container">
+                                    <div class="topupsuccess">
+                                        <div class="imgsuccess">
+                                            <img width="40px" src="success.png" height="50px"/>
+                                        </div>
+                                        <p><i class="fas"></i>Money Added Successfully</p>
+                                    </div>
+                                </div>
                             </section>
                             <section class="tab-pane" id="wallet-top-up-budget">
                                 <fieldset class="d-flex flex-wrap">
