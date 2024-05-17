@@ -26,6 +26,7 @@ domReady(function () {
        // alert("You Qr is : " + decodeText, decodeResult);
         try{
             document.getElementsByClassName("qrhead")[0].style.display='none';
+            document.querySelector('#html5-qrcode-button-camera-stop').click();
             document.getElementsByClassName("paymentFields")[0].style.display='block';
         }catch(e) {
             console.log(e)
@@ -40,12 +41,28 @@ domReady(function () {
 });
 
 function hidePay(){
-    document.getElementsByClassName("paymentFields")[0].style.display='none';
-    document.getElementsByClassName("paymentSuccess")[0].style.display='block';
+    document.getElementsByClassName("loader")[0].style.display='block';
+    let delayInMilliseconds = 1000; //1 second
+
+    setTimeout(function() {
+        //your code to be executed after 1 second
+        document.getElementsByClassName("loader")[0].style.display='none';
+        document.getElementsByClassName("payfs")[0].style.display='none';
+        document.getElementsByClassName("paymentFields")[0].style.display='none';
+        document.getElementById("paymentFields").style.display='none';
+        document.getElementsByClassName("paymentSuccess")[0].style.display='block';
+    }, delayInMilliseconds);
+
 }
 function topUp(){
     let span = document.getElementById("planned");
     let span1 = document.getElementById("balance");
     span.textContent = "$3000";
     span1.textContent = "$1100";
+}
+
+function showPay(){
+    document.getElementsByClassName("paymentFields")[0].style.display='none';
+    document.getElementsByClassName("paymentSuccess")[0].style.display='none';
+    document.getElementsByClassName("qrhead")[0].style.display='block';
 }
