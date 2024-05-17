@@ -85,3 +85,7 @@ video {
 .topupsuccess {
     display: none;
 }
+
+.twfont{
+    font-family: var(--bs-body-font-family);
+}
