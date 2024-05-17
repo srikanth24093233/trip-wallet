@@ -43,3 +43,9 @@ function hidePay(){
     document.getElementsByClassName("paymentFields")[0].style.display='none';
     document.getElementsByClassName("paymentSuccess")[0].style.display='block';
 }
+function topUp(){
+    let span = document.getElementById("planned");
+    let span1 = document.getElementById("balance");
+    span.textContent = "$3000";
+    span1.textContent = "$1100";
+}

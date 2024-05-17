@@ -79,6 +79,9 @@
                                 <a href="#wallet-top-up" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Top Up</a>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <a href="#wallet-top-up-budget" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Trip Budget</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <a href="#transactions" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Transactions</a>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -256,6 +259,28 @@
                                     <button type="button" class="btn btn-primary">Top Up</button>
                                 </div>
                                 </form>
+                            </section>
+                            <section class="tab-pane" id="wallet-top-up-budget">
+                                <fieldset class="d-flex flex-wrap">
+                                    <legend>Trip Budget</legend>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <label for="paymentVisa" class="ms-2">
+                                                <i class="fab fs-4 text-primary"></i>Planned Amount  <span id="planned" class="badge bg-primary rounded-pill">$2000</span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <label for="paymentAmex1" class="ms-2">
+                                                <i class="fab fs-4 text-blue"></i>Balance Amount  <span id="balance" class="badge bg-primary rounded-pill">$100</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+
+                                <div class="mt-3 d-flex flex-column align-items-center">
+                                    <input type="text" class="form-control mb-2" placeholder="Enter the value for top-up">
+                                    <button type="button" onclick="topUp()" class="btn btn-primary">Top Up</button>
+                                </div>
                             </section>
                             <section class="tab-pane" id="pay">
                                 <div class="container qrhead">
