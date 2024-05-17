@@ -65,7 +65,7 @@
             <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">  <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="walletModalLabel"><i class="fas fa-wallet"></i> BonVoY T{r}IP WALLET ID# W12345</h5>
+                        <h5 class="modal-title" id="walletModalLabel"><i class="fas fa-wallet twfont"></i> BONVoY T{r}IP WALLET ID# W12345</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -77,10 +77,7 @@
                                 <a href="#instruments" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Payment Source</a>
                             </li-->
                             <li class="nav-item" role="presentation">
-                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Top Up</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a href="#wallet-top-up-budget" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Trip Budget</a>
+                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Details</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="#transactions" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Transactions</a>
@@ -92,33 +89,35 @@
                         <div class="tab-content">
                             <section class="tab-pane active" id="summary">
                                 <div class="container px-4 px-lg-5 mt-5">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped twfont">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Authorized Amount</th>
-                                            <th scope="col">Cash</th>
-                                            <th scope="col">Points</th>
+                                            <th scope="col"></th>
+                                            <th class="twfont fwt" scope="col">Used</th>
+                                            <th class="twfont fwt" scope="col">Balance</th>
+                                            <th class="twfont fwt" scope="col">Total</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><i class="fas"></i> Used  </td>
-                                            <td><i class="fas fa-dollar-sign"> 100.00</i>  </td>
-                                            <td>1000</td>
+                                            <td><i class="fas"></i> Authorized Amount  </td>
+                                            <td><i class="fas twfont fwt"> 320.50 USD</i>  </td>
+                                            <td><i class="fas twfont fwt"> 579.50 USD</i></td>
+                                            <td><i class="fas twfont fwt"> 900.00 USD</i></td>
                                         </tr>
                                         <tr>
-                                            <td><i class="fas"></i> Balance  </td>
-                                            <td><i class="fas fa-dollar-sign"> 10.00</i> </td>
-                                            <td>5000</td>
+                                            <td><i class="fas"></i> Cash  </td>
+                                            <td><i class="fas twfont fwt"> 160.50 USD</i>  </td>
+                                            <td><i class="fas twfont fwt"> 439.50 USD</i></td>
+                                            <td><i class="fas twfont fwt"> 600.00 USD</i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas"></i> Points  </td>
+                                            <td><i class="fas twfont fwt"> 1600 </i>  </td>
+                                            <td><i class="fas twfont fwt"> 1400</i></td>
+                                            <td><i class="fas twfont fwt"> 3000</i></td>
                                         </tr>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">Total</th>
-                                                <th scope="col"><i class="fas fa-dollar-sign"></i> 110.00</th>
-                                                <th scope="col">6000</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                     <h4 style="background-color: rgba(220, 248, 220, 0.3); padding: 5px 10px; border-radius: 5px;">
                                         <p class="text-muted">Points Earning Potential: <i class="fas fa-star"> 2500</i></p>
