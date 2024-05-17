@@ -65,7 +65,7 @@
             <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">  <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="walletModalLabel"><i class="fas fa-wallet twfont"></i> BONVoY T{r}IP WALLET ID# W12345</h5>
+                        <h5 class="modal-title" id="walletModalLabel"><i class="fas fa-wallet"></i> <i class="twfont">BONVoY T{r}IP WALLET ID# W12345</i></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -120,7 +120,7 @@
                                         </tbody>
                                     </table>
                                     <h4 style="background-color: rgba(220, 248, 220, 0.3); padding: 5px 10px; border-radius: 5px;">
-                                        <p class="text-muted">Points Earning Potential: <i class="fas fa-star"> 2500</i></p>
+                                        <p class="text-muted">Points Earning Potential: <i class="fas fa-star"></i> <i class="twfont">2500</i></p>
                                     </h4>
                                 </div>
                             </section>
@@ -232,18 +232,24 @@
                                 <div class="wallet-top-up-div">
                                 <form name="paymentForm">
                                 <fieldset class="d-flex flex-wrap">
-                                    <legend>Marriott Money</legend>
+                                    <legend>Wallet Details</legend>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-center">
                                             <input type="radio" id="paymentVisa" name="paymentMethod" value="visa" checked>
                                             <label for="paymentVisa" class="ms-2">
-                                                <i class="fab fs-4 me-2 text-primary"><img height="20px" width="20px" src="giftcard.png"/> </i> giftcard ending in 4567  <span class="badge bg-primary rounded-pill">Available: $100</span>
+                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in 4567 <span class="badge bg-primary rounded-pill"> Available 579.50 USD</span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <input type="radio" id="paymentAmex" name="paymentMethod" value="amex">
+                                            <label for="paymentAmex" class="ms-2">
+                                                <i class="fab fa-cc-amex fs-4 text-blue"></i> ending in 6789 <span class="badge bg-primary rounded-pill"> Available 579.50 USD</span>
                                             </label>
                                         </li>
                                         <li class="list-group-item d-flex align-items-center">
                                             <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
                                             <label for="paymentBonvoy" class="ms-2">
-                                                <i class="fab fs-4 text-blue"></i> Bonvoy Points  <span class="badge bg-primary rounded-pill">Available: 6,000 Points</span>
+                                                <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
                                             </label>
                                         </li>
                                     </ul>
