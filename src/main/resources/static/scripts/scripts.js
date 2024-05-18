@@ -68,6 +68,10 @@ function showPay(){
 }
 
 function walletTopUp(){
+    var t = document.getElementById("topUpAmount").value;
+    var last4 = document.getElementById("paymentVisa").value;
+    callApi("/topUp", "tripId=356784&date=May 16&transType=CASH&lastFour="+last4+"&cardType=visa&topUpAmount="+t+"&service=WALLET&item=TOPUP")
+
     document.getElementsByClassName("wallet-top-up-div")[0].style.display='none';
     document.getElementsByClassName("topupsuccess")[0].style.display='block';
 }
@@ -75,4 +79,23 @@ function walletTopUp(){
 function showWalletTopUp(){
     document.getElementsByClassName("wallet-top-up-div")[0].style.display='block';
     document.getElementsByClassName("topupsuccess")[0].style.display='none';
+}
+function buildWallet() {
+ callApi("/topUp", "tripId=356784&date=May 16&transType=CASH&lastFour=4567&cardType=visa&topUpAmount=320.50&service=WALLET")
+}
+function fetchSummary() {
+    callApi("/fetchSummary", "tripId=44444")
+}
+function callApi(url, body){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+    // Sending our request
+    xhr.send(body);
+
 }
