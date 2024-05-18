@@ -6,6 +6,24 @@ public class TopupSummary {
     private double authorized;
     private String transType;
     private long pointsAuthorized;
+    private boolean pointsTrans;
+    private boolean cashTrans;
+
+    public boolean isCashTrans() {
+        return cashTrans;
+    }
+
+    public void setCashTrans(boolean cashTrans) {
+        this.cashTrans = cashTrans;
+    }
+
+    public boolean isPointsTrans() {
+        return pointsTrans;
+    }
+
+    public void setPointsTrans(boolean pointsTrans) {
+        this.pointsTrans = pointsTrans;
+    }
 
     public void setTransType(String transType) {
         this.transType = transType;

@@ -87,10 +87,13 @@ public class TripWalletUtility {
                         TopupSummary v = (TopupSummary) topupSummary.get(record[3]);
                         double d=v.getAuthorized()+Double.parseDouble(record[5]);
                         v.setAuthorized(d);
+                        v.setCashTrans(true);
                         topupSummary.put(record[3],v);
                     }else{
 
-                        topupSummary.put(record[3],new TopupSummary(record[3],record[4],Double.parseDouble(record[5]),record[2],Long.parseLong(record[6])));
+                        TopupSummary value = new TopupSummary(record[4], record[3], Double.parseDouble(record[5]), record[2], Long.parseLong(record[6]));
+                        value.setCashTrans(true);
+                        topupSummary.put(record[3], value);
                     }
 
                 }
@@ -99,15 +102,25 @@ public class TripWalletUtility {
                         TopupSummary v = (TopupSummary) topupSummary.get(record[3]);
                         long d=v.getPointsAuthorized()+Long.parseLong(record[6]);
                         v.setPointsAuthorized(d);
+                        v.setPointsTrans(true);
                         topupSummary.put(record[3],v);
                     }else{
-
-                        topupSummary.put(record[3],new TopupSummary(record[3],record[4],Double.parseDouble(record[5]),record[2],Long.parseLong(record[6])));
+                        TopupSummary value = new TopupSummary(record[4], record[3], Double.parseDouble(record[5]), record[2], Long.parseLong(record[6]));
+                        value.setPointsTrans(true);
+                        topupSummary.put(record[3], value);
                     }
 
                 }
             }
-            transactions.add(new TopUp(Long.parseLong(record[0]),record[1],record[2],record[3],record[4],Double.parseDouble(record[5]),Long.parseLong(record[6]),record[7],record[8]));
+
+            TopUp e = new TopUp(Long.parseLong(record[0]), record[1], record[2], record[3], record[4], Double.parseDouble(record[5]), Long.parseLong(record[6]), record[7], record[8]);
+            if(Long.parseLong(record[6]) > 0){
+                e.setPointsTras(true);
+            }
+            if(Double.parseDouble(record[5]) > 0){
+                e.setCashTrans(true);
+            }
+            transactions.add(e);
 
         }
         cashBalance = totalCashAuthorized - cashUsed;

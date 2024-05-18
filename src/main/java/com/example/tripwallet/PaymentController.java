@@ -83,7 +83,7 @@ public class PaymentController {
         }
         long pointsAmt = 0;
         if(pointsAmount != null){
-            pointsAmt = Long.parseLong(pointsAmount);
+            pointsAmt = ((long)Double.parseDouble(pointsAmount));
         }
         long trpId = 0;
         if(tripId != null){

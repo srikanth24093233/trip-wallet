@@ -95,3 +95,6 @@ video {
 .fwt {
     font-weight: 400;
 }
+.checkDialog {
+    display: none;
+}

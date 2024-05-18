@@ -11,7 +11,24 @@ public class TopUp {
     public long pointsAmount;
     public String service;
     public String item;
+    public boolean pointsTras;
+    public boolean cashTrans;
 
+    public void setCashTrans(boolean cashTrans) {
+        this.cashTrans = cashTrans;
+    }
+
+    public boolean isCashTrans() {
+        return cashTrans;
+    }
+
+    public void setPointsTras(boolean pointsTras) {
+        this.pointsTras = pointsTras;
+    }
+
+    public boolean isPointsTras() {
+        return pointsTras;
+    }
 
     public void setTripId(long tripId) {
         this.tripId = tripId;

@@ -13,6 +13,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/qr.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <script src="scripts/scripts.js"></script>
         <script src="https://unpkg.com/html5-qrcode"></script>
     </head>
@@ -150,7 +153,13 @@
                                                 <td>{{item}}</td>
                                                 <td>{{service}}</td>
                                                 <td>{{transType}}</td>
-                                                <td>{{topUpAmount}}</td>
+
+                                                {{#pointsTras}}
+                                                <td>{{pointsAmount}}</td>
+                                                    {{/pointsTras}}
+                                                {{#cashTrans}}
+                                                    <td>{{topUpAmount}}</td>
+                                                {{/cashTrans}}
                                                 <td>16</td>
                                             </tr>
                                             {{/transactions}}
@@ -170,12 +179,24 @@
                                     <ul class="list-group list-group-flush">
                                         {{#summary}}
                                             {{#topupSummaryList}}
+                                                {{#pointsTrans}}
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
+                                                        </label>
+                                                    </li>
+                                                {{/pointsTrans}}
+                                                {{#cashTrans}}
                                         <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="{{lastFour}}" checked>
+                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="{{cardType}}" checked>
+                                            <input type="hidden" id="paymentLast4" name="paymentLast4" value="{{lastFour}}" checked>
                                             <label for="paymentVisa" class="ms-2">
                                                 <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span>
                                             </label>
                                         </li>
+                                                {{/cashTrans}}
+
                                     {{/topupSummaryList}}
 
                                         {{#hasNoPoints}}
@@ -229,6 +250,9 @@
                                 </div>
                             </section>
                             <section class="tab-pane" id="pay">
+                                <div><a href="pos.png" class="qrlink" download="posCheck">Click to Download pos check with QR for testing</a>
+
+                                </div>
                                 <div class="container qrhead">
                                     <h1>Scan QR Codes</h1>
                                     <div class="section">
@@ -237,29 +261,66 @@
                                     </div>
                                 </div>
                                 <div id="paymentFields" class="paymentFields">
-                                <fieldset class="d-flex flex-wrap payfs">
-                                    <legend>Total Amount : <span class="badge bg-primary rounded-pill">$100.23</span></legend>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="visa" checked>
-                                            <label for="paymentVisa" class="ms-2">
-                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in 4567
-                                            </label>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentAmex" name="paymentMethod" value="amex">
-                                            <label for="paymentAmex" class="ms-2">
-                                                <i class="fab fa-cc-amex fs-4 text-blue"></i> ending in 6789
-                                            </label>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
-                                            <label for="paymentBonvoy" class="ms-2">
-                                                <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill">6,000 Points</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </fieldset>
+                                    <div id='checkDialog' class="checkDialog" title='Check'>
+                                        <legend class="ms-4"><p id="posname"></p></legend>
+                                        <br/><label><p class="ms-4" id="checkno"></p></label>
+                                       <br/> <label class="ms-2"> <p id="itemname"></p></label> <label class="ms-4"></label><label class="ms-4"><p id="itemcost"></p></label>
+                                       <br/> <label class="ms-2">Subtotal</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-2"></label>
+                                        <label class="ms-4"> <p id="subtotal"></p></label>
+                                       <br/> <label class="ms-2">Tax</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"><p id="tax"></p></label>
+                                       <br/> <label class="ms-2">Total</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-2"></label>
+                                        <label class="ms-4">
+                                            <p id="total"></p></label>
+                                    </div>
+                                    <fieldset class="d-flex flex-wrap">
+                                        <i class='fas ms-2'></i>
+                                        <legend class="twfont">Payment Options</legend>
+                                        <ul class="list-group list-group-flush">
+                                            {{#summary}}
+                                                {{#topupSummaryList}}
+                                                    {{#pointsTrans}}
+                                                        <li class="list-group-item d-flex align-items-center">
+                                                            <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
+                                                            <label for="paymentB" class="ms-2">
+                                                                <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
+                                                            </label>
+                                                        </li>
+                                                    {{/pointsTrans}}
+                                                    {{#cashTrans}}
+                                                        <li class="list-group-item d-flex align-items-center">
+                                                            <input type="radio" id="paymentCC" name="paymentMethod" value="{{cardType}}" checked>
+                                                            <input type="hidden" id="paymentLast4" name="paymentLast4" value="{{lastFour}}" checked>
+                                                            <label for="paymentVisa" class="ms-2">
+                                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span>
+                                                            </label>
+                                                        </li>
+                                                    {{/cashTrans}}
+
+                                                {{/topupSummaryList}}
+
+                                                {{#hasNoPoints}}
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
+                                                        </label>
+                                                    </li>
+                                                {{/hasNoPoints}}
+                                            {{/summary}}
+                                        </ul>
+                                    </fieldset>
 
                                     <div class="mt-3 d-flex flex-column">
                                         <button type="button" onclick="hidePay()" class="btn btn-primary">Pay</button><div class="loader"></div>

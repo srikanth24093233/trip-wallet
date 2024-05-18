@@ -42,11 +42,11 @@ public class WalletSummary {
     }
 
     public double getCashUsed() {
-        return cashUsed;
+        return Math.round(cashUsed*100.0)/100.0;
     }
 
     public double getCashBalance() {
-        return cashBalance;
+        return Math.round(cashBalance*100.0)/100.0;
     }
 
     public long getPointsUsed() {
