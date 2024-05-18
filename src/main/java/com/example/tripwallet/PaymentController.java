@@ -107,9 +107,7 @@ public class PaymentController {
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                System.out.println("ccc "+cookie.getName());
                 if (cookie.getName().equals("tripSess")) {
-                    System.out.println("val " +cookie.getValue());
                    return cookie.getValue();
                 }
             }

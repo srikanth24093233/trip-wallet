@@ -67,6 +67,7 @@ public class TripWalletUtility {
         double cashBalance = 0;
         long pointsBalance = 0;
         Map<String,TopupSummary> topupSummary = new HashMap<>();
+        Map<String,TopupSummary> topupSummaryPoints = new HashMap<>();
         List<TopUp> transactions = new ArrayList<>();
         for (String[] record : allData) {
 
@@ -98,16 +99,16 @@ public class TripWalletUtility {
 
                 }
                 if(record[2].equals("POINTS") && !record[7].equals("WALLET")){
-                    if(topupSummary.containsKey(record[3])){
+                    if(topupSummary.containsKey(record[2])){
                         TopupSummary v = (TopupSummary) topupSummary.get(record[3]);
                         long d=v.getPointsAuthorized()+Long.parseLong(record[6]);
                         v.setPointsAuthorized(d);
                         v.setPointsTrans(true);
-                        topupSummary.put(record[3],v);
+                        topupSummaryPoints.put(record[2],v);
                     }else{
                         TopupSummary value = new TopupSummary(record[4], record[3], Double.parseDouble(record[5]), record[2], Long.parseLong(record[6]));
                         value.setPointsTrans(true);
-                        topupSummary.put(record[3], value);
+                        topupSummaryPoints.put(record[2], value);
                     }
 
                 }
@@ -137,15 +138,15 @@ public class TripWalletUtility {
         }
         List<WalletSummary> lw= new ArrayList<WalletSummary>();
         List<TopupSummary> ts = new ArrayList<TopupSummary>(topupSummary.values());
-
+        List<TopupSummary> tsp = new ArrayList<TopupSummary>(topupSummaryPoints.values());
         w.setTopupSummaryList(ts);
+        w.setTopupSummaryPoints(tsp);
         w.setTransactions(transactions);
         lw.add(w);
 
         return lw;
     }
     public String buildWallet(String fn){
-        System.out.println("bw "+fn);
         if(null != fn){
             File f = new File(fn);
             if(f.exists()){

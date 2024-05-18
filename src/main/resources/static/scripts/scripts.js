@@ -37,8 +37,8 @@ domReady(function () {
         document.getElementById("itemcost").innerHTML=itemcost;
         document.getElementById("subtotal").innerHTML=subtotal;
         document.getElementById("tax").innerHTML=tax;
-        document.getElementById("total").innerHTML=total;
-        alert("<p>posname</p> ");
+        document.getElementById("total").innerHTML=total+" (246 points)";
+
         try{
             document.getElementsByClassName("qrhead")[0].style.display='none';
             document.getElementsByClassName("qrlink")[0].style.display='none';
@@ -72,7 +72,7 @@ function hidePay(){
         ptAmt = t*10;
         transType="POINTS";
     }
-    if(document.getElementById("paymentVisa").checked){
+    if(document.getElementById("paymentCC").checked){
         toupAmt = t;
     }
 

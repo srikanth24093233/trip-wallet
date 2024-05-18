@@ -13,6 +13,17 @@ public class WalletSummary {
     public long totalPointsAuthorized = 0;
     public double totalAuthorizedAmount = 0.0;
     public boolean hasNoPoints;
+    List<TopupSummary> topupSummaryList = new ArrayList<>();
+    List<TopUp> transactions = new ArrayList<>();
+    List<TopupSummary> topupSummaryPoints = new ArrayList<>();
+
+    public List<TopupSummary> getTopupSummaryPoints() {
+        return topupSummaryPoints;
+    }
+
+    public void setTopupSummaryPoints(List<TopupSummary> topupSummaryPoints) {
+        this.topupSummaryPoints = topupSummaryPoints;
+    }
 
     public void setHasNoPoints(boolean hasPoints) {
         this.hasNoPoints = hasPoints;
@@ -22,8 +33,6 @@ public class WalletSummary {
         return hasNoPoints;
     }
 
-    List<TopupSummary> topupSummaryList = new ArrayList<>();
-    List<TopUp> transactions = new ArrayList<>();
 
     public void setTransactions(List<TopUp> transactions) {
         this.transactions = transactions;
