@@ -104,3 +104,6 @@ i {
 .qrsection{
     display: none;
 }
+.headDisplay{
+    font-size: calc(1.175rem + 1.2vw);
+}
