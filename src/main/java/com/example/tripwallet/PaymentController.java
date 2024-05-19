@@ -92,16 +92,7 @@ public class PaymentController {
         }
         TopUp top = new TopUp(trpId,date,transType,lastFour,cardType,topUpAmt,pointsAmt,service,item);
         new TripWalletUtility().insertTopup(top,getTripSess(req));
-
-        ///
-        List<WalletSummary> summary = null;
-        try{
-            summary = new TripWalletUtility().fetchSummary(getTripSess(req));
-        }catch(Exception e){
-            //
-        }
-        model.put("summary",summary);
-        return new ModelAndView("hotelReservationDetails",model);
+        return new ModelAndView("",model);
     }
     public String getTripSess(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();

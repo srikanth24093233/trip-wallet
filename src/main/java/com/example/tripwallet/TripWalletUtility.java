@@ -28,6 +28,7 @@ public class TripWalletUtility {
             existingData.add(header);
             writer.writeAll(existingData);
             writer.close();
+            outputfile.close();
         }
         catch (IOException e) {
             // TODO Auto-generated catch block
@@ -69,11 +70,13 @@ public class TripWalletUtility {
         Map<String,TopupSummary> topupSummary = new HashMap<>();
         Map<String,TopupSummary> topupSummaryPoints = new HashMap<>();
         List<TopUp> transactions = new ArrayList<>();
+
         for (String[] record : allData) {
 
             if(!record[2].isEmpty() || !record[2].isBlank()){
                 if(record[2].equals("CASH") && !record[7].equals("WALLET")){
                     cashUsed = cashUsed + (Double.parseDouble(record[5]));
+                    System.out.println("cashused "+cashUsed);
                 } else if (record[2].equals("POINTS") && !record[7].equals("WALLET")) {
                     pointsUsed = pointsUsed + Long.parseLong(record[6]);
                 }
@@ -125,6 +128,7 @@ public class TripWalletUtility {
 
         }
         cashBalance = totalCashAuthorized - cashUsed;
+        System.out.println("cashBalance "+cashBalance);
         pointsBalance = totalPointsAuthorized - pointsUsed;
         WalletSummary w = new WalletSummary();
         w.setCashUsed(cashUsed);
