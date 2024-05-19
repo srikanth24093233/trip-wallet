@@ -75,7 +75,7 @@ function hidePay(){
     var cashBalance = document.getElementById("cashBalance").innerHTML;
     if(bonRadio.checked){
         ptAmt = t*10;
-        if(ptAmt > pointsBalance){
+        if(Number(ptAmt) > Number(pointsBalance)){
             alert('Sorry not enough points balance. Please topup points balance');
             return;
         }
@@ -83,7 +83,7 @@ function hidePay(){
     }
     if(document.getElementById("paymentCC").checked){
         toupAmt = t;
-        if(toupAmt > cashBalance){
+        if(Number(toupAmt) > Number(cashBalance)){
             alert('Sorry not enough cash balance. Please topup cash balance');
             return;
         }
