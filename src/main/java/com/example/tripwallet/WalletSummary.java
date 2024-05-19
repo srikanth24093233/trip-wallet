@@ -16,6 +16,15 @@ public class WalletSummary {
     List<TopupSummary> topupSummaryList = new ArrayList<>();
     List<TopUp> transactions = new ArrayList<>();
     List<TopupSummary> topupSummaryPoints = new ArrayList<>();
+    public long bonvoyPoints = 140000;
+
+    public long getBonvoyPoints() {
+        return bonvoyPoints;
+    }
+
+    public void setBonvoyPoints(long bonvoyPoints) {
+        this.bonvoyPoints = bonvoyPoints;
+    }
 
     public List<TopupSummary> getTopupSummaryPoints() {
         return topupSummaryPoints;

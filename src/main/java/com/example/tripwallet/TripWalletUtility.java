@@ -135,6 +135,7 @@ public class TripWalletUtility {
         w.setPointsBalance(pointsBalance);
         w.setTotalPointsAuthorized(totalPointsAuthorized);
         w.setTotalCashAuthorized(totalCashAuthorized);
+        w.setBonvoyPoints(w.getBonvoyPoints()-pointsBalance);
         if(!(pointsUsed > 0)){
             w.setHasNoPoints(true);
         }
