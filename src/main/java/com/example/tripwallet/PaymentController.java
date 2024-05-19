@@ -54,17 +54,18 @@ public class PaymentController {
         }
         return "twqrread";
     }
-    @GetMapping("/fetchSummary")
-    public List<WalletSummary> fetchSummary(HttpServletRequest req) {
-        String tripId = req.getParameter("tripId");
+    @PostMapping("/fetchSummary")
+    public ModelAndView fetchSummary(Map<String, Object> model,HttpServletRequest req) {
+        String tripId = getTripSess(req);
         List<WalletSummary> summary = null;
         try{
-            summary = new TripWalletUtility().fetchSummary(tripId+".csv");
+            summary = new TripWalletUtility().fetchSummary(tripId);
         }catch(Exception e){
             //
         }
 
-        return summary;
+        model.put("summary",summary);
+        return new ModelAndView("hotelReservationDetails",model);
     }
     @PostMapping("/topUp")
     public ModelAndView buildWallet(Map<String, Object> model, HttpServletRequest req) {

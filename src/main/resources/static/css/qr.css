@@ -98,3 +98,6 @@ video {
 .checkDialog {
     display: none;
 }
+i {
+    font-style: normal;
+}

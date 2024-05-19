@@ -20,7 +20,10 @@ function domReady(fn) {
 }
 
 domReady(function () {
-
+    var urlparam = window.location.search;
+    if(urlparam){
+        document.getElementById("walletModal1").click();
+    }
     // If found you qr code
     function onScanSuccess(decodeText, decodeResult) {
         const myArray = decodeText.split("_");
@@ -37,7 +40,8 @@ domReady(function () {
         document.getElementById("itemcost").innerHTML=itemcost;
         document.getElementById("subtotal").innerHTML=subtotal;
         document.getElementById("tax").innerHTML=tax;
-        document.getElementById("total").innerHTML=total+" (246 points)";
+        document.getElementById("total").innerHTML=total;
+        document.getElementById("totalpt").innerHTML="(246 points)";
 
         try{
             document.getElementsByClassName("qrhead")[0].style.display='none';
@@ -68,8 +72,13 @@ function hidePay(){
     var toupAmt = 0;
     var transType = "CASH";
     var item = document.getElementById("posname").innerHTML;
+    var pointsBalance = document.getElementById("pointsBalance").innerHTML;
     if(bonRadio.checked){
         ptAmt = t*10;
+        if(ptAmt > pointsBalance){
+            alert('Sorry not enough points balance. Please topup points balance');
+            return;
+        }
         transType="POINTS";
     }
     if(document.getElementById("paymentCC").checked){
@@ -77,22 +86,24 @@ function hidePay(){
     }
 
     callApi("/topUp", "tripId=356784&date=May 16&transType="+transType+"&lastFour="+last4+"&cardType=visa&topUpAmount="+toupAmt+"&pointsAmount="+ptAmt+"&service=POS&item="+item)
+    document.getElementsByClassName("loader")[0].style.display='none';
+    document.getElementsByClassName("paymentFields")[0].style.display='none';
+    document.getElementById("paymentFields").style.display='none';
+    document.getElementsByClassName("paymentSuccess")[0].style.display='block';
 
-
-
-
-
-
-    document.getElementsByClassName("loader")[0].style.display='block';
     let delayInMilliseconds = 1000; //1 second
 
     setTimeout(function() {
-        //your code to be executed after 1 second
-        document.getElementsByClassName("loader")[0].style.display='none';
-        document.getElementsByClassName("paymentFields")[0].style.display='none';
-        document.getElementById("paymentFields").style.display='none';
-        document.getElementsByClassName("paymentSuccess")[0].style.display='block';
+
     }, delayInMilliseconds);
+    var urlparam = window.location.search;
+    if(urlparam) {
+        window.location.href = window.location.href;
+    }
+    else{
+            window.location.href = window.location.href + "?reload";
+        }
+
 
 }
 function topUp(){
@@ -128,9 +139,19 @@ function walletTopUp(){
 
     document.getElementsByClassName("wallet-top-up-div")[0].style.display='none';
     document.getElementsByClassName("topupsuccess")[0].style.display='block';
+    setTimeout(function() {
+        //
+    }, 1000);
+    var urlparam = window.location.search;
+    if(urlparam) {
+        window.location.href = window.location.href;
+    }else{
+        window.location.href = window.location.href + "?reload";
+    }
 }
 
 function showWalletTopUp(){
+
     document.getElementsByClassName("wallet-top-up-div")[0].style.display='block';
     document.getElementsByClassName("topupsuccess")[0].style.display='none';
 }
@@ -146,7 +167,7 @@ function callApi(url, body){
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            //console.log(this.responseText);
         }
     }
     // Sending our request

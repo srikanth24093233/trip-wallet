@@ -52,7 +52,7 @@
         <section class="py-5">
             <div class="reservation-container d-flex flex-column align-items-center">
                 <div class="reservation-button-container d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#walletModal">
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" id="walletModal1" data-bs-target="#walletModal">
                         <i class="fas fa-wallet"></i> <i class='ms-2'> <i class="twfont fcol">BONVoY T{r}IP WALLET</i>
                     </button>
                 </div>
@@ -115,7 +115,7 @@
                                         <tr>
                                             <td><i class="fas"></i> Points  </td>
                                             <td><i class="fas twfont fwt"> {{pointsUsed}} </i>  </td>
-                                            <td><i class="fas twfont fwt"> {{pointsBalance}}</i></td>
+                                            <td><p class="fas twfont fwt" id="pointsBalance">{{pointsBalance}}</p></td>
                                             <td><i class="fas twfont fwt"> {{totalPointsAuthorized}}</i></td>
                                         </tr>
                                         </tbody>
@@ -284,6 +284,10 @@
                                         <label class="ms-2"></label>
                                         <label class="ms-4">
                                             <p id="total"></p></label>
+                                        <br/> <label class="ms-2">Total(Points)</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4">
+                                            <p id="totalpt"class="ms-2"></p></label>
                                     </div>
                                     <fieldset class="d-flex flex-wrap">
                                         <i class='fas ms-2'></i>
@@ -291,14 +295,7 @@
                                         <ul class="list-group list-group-flush">
                                             {{#summary}}
                                                 {{#topupSummaryList}}
-                                                    {{#pointsTrans}}
-                                                        <li class="list-group-item d-flex align-items-center">
-                                                            <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
-                                                            <label for="paymentB" class="ms-2">
-                                                                <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span>
-                                                            </label>
-                                                        </li>
-                                                    {{/pointsTrans}}
+
                                                     {{#cashTrans}}
                                                         <li class="list-group-item d-flex align-items-center">
                                                             <input type="radio" id="paymentCC" name="paymentMethod" value="{{cardType}}" checked>
@@ -310,7 +307,16 @@
                                                     {{/cashTrans}}
 
                                                 {{/topupSummaryList}}
+                                                {{#topupSummaryPoints}}
 
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span>
+                                                        </label>
+                                                    </li>
+
+                                                {{/topupSummaryPoints}}
                                                 {{#hasNoPoints}}
                                                     <li class="list-group-item d-flex align-items-center">
                                                         <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
