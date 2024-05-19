@@ -76,7 +76,6 @@ public class TripWalletUtility {
             if(!record[2].isEmpty() || !record[2].isBlank()){
                 if(record[2].equals("CASH") && !record[7].equals("WALLET")){
                     cashUsed = cashUsed + (Double.parseDouble(record[5]));
-                    System.out.println("cashused "+cashUsed);
                 } else if (record[2].equals("POINTS") && !record[7].equals("WALLET")) {
                     pointsUsed = pointsUsed + Long.parseLong(record[6]);
                 }
@@ -128,7 +127,6 @@ public class TripWalletUtility {
 
         }
         cashBalance = totalCashAuthorized - cashUsed;
-        System.out.println("cashBalance "+cashBalance);
         pointsBalance = totalPointsAuthorized - pointsUsed;
         WalletSummary w = new WalletSummary();
         w.setCashUsed(cashUsed);
