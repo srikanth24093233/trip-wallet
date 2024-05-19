@@ -15,12 +15,11 @@
         <link href="css/qr.css" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-        <script src="scripts/scripts.js"></script>
         <script src="https://unpkg.com/html5-qrcode"></script>
-    </head>
-    <body>
-        <!-- Navigation-->
+         <script src="scripts/scripts.js"></script>
+     </head>
+     <body>
+         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!"><img src="logo.png" height="90px"/></a>
@@ -53,14 +52,14 @@
             <div class="reservation-container d-flex flex-column align-items-center">
                 <div class="reservation-button-container d-flex justify-content-end">
                     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" id="walletModal1" data-bs-target="#walletModal">
-                        <i class="fas fa-wallet"></i> <i class='ms-2'> <i class="twfont fcol">BONVoY T{r}IP WALLET</i>
+                        <i class="fas fa-wallet"></i> <i class='ms-2'></i> <i class="twfont fcol">BONVoY T{r}IP WALLET</i>
                     </button>
                 </div>
                 <div class="reservation-details text-start">
                     <p><i class="fa-solid fa-umbrella-beach"></i> <i class='fas ms-2'></i> <strong><i class="twfont">Vacation at JW Marriott</i></strong></p>
                     <p><i class="fas fa-calendar-alt"></i> <i class='fas ms-3'></i> <strong> <i class="twfont">16 May - 18 May</i></strong></p>
                     <p><i class="fa-solid fa-bed"></i> <i class='fas ms-2'></i> <strong> <i class="twfont">King Suite</i></strong></p>
-                    <p><i class="fas fa-dollar-sign"></i> <i class='fas ms-3'></i> <i class="twfont"><strong>Total Price:</strong> 320.50 USD</p></p>
+                    <p><i class="fas fa-dollar-sign"></i> <i class='fas ms-3'></i> <i class="twfont"><strong>Total Price:</strong> 320.50 USD</i></p>
                 </div>
             </div>
 
@@ -80,7 +79,7 @@
                                 <a href="#instruments" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Payment Source</a>
                             </li-->
                             <li class="nav-item" role="presentation">
-                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Details</a>
+                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">TopUp</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="#transactions" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Transactions</a>
@@ -94,7 +93,8 @@
                                 <div class="summaryDiv">
                                 <i class='fas ms-2'></i>
                                 <legend class="twfont">Trip Id: 356784</legend>
-                                <div class="container px-4 px-lg-5 mt-5">
+                                  <p>Wallet authorized with room stay. <strong>TopUp</strong> to manage trip expenses</p>
+                                <div class="px-1 px-lg-5 mt-1">
                                     <table class="table table-striped twfont">
                                         <thead>
                                         <tr>
@@ -251,14 +251,14 @@
                                 </div>
                             </section>
                             <section class="tab-pane" id="pay">
+
                                 <div><a href="pos.png" class="qrlink" download="posCheck">Click to Download pos check with QR for testing</a>
 
                                 </div>
                                 <div class="container qrhead">
                                     <h1>Scan QR Codes</h1>
                                     <div class="section">
-                                        <div id="my-qr-reader">
-                                        </div>
+                                    <div id="my-qr-reader"></div>
                                     </div>
                                 </div>
                                 <div id="paymentFields" class="paymentFields">
@@ -346,7 +346,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Settle</button>
                     </div>
                 </div>
                 </div>

@@ -133,7 +133,7 @@ public class TripWalletUtility {
         w.setPointsBalance(pointsBalance);
         w.setTotalPointsAuthorized(totalPointsAuthorized);
         w.setTotalCashAuthorized(totalCashAuthorized);
-        if(!(totalPointsAuthorized > 0)){
+        if(!(pointsUsed > 0)){
             w.setHasNoPoints(true);
         }
         List<WalletSummary> lw= new ArrayList<WalletSummary>();

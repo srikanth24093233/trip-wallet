@@ -20,48 +20,44 @@ function domReady(fn) {
 }
 
 domReady(function () {
+    setTimeout(function() {
+
+    }, 1000);
     var urlparam = window.location.search;
     if(urlparam){
         document.getElementById("walletModal1").click();
     }
     // If found you qr code
-    function onScanSuccess(decodeText, decodeResult) {
-        const myArray = decodeText.split("_");
-        var posname = myArray[0];
-        var check = myArray[1];
-        var itemname = myArray[2];
-        var itemcost = myArray[3];
-        var subtotal = myArray[4];
-        var tax = myArray[5];
-        var total = myArray[6];
-        document.getElementById("posname").innerHTML=posname;
-        document.getElementById("checkno").innerHTML=check;
-        document.getElementById("itemname").innerHTML=itemname;
-        document.getElementById("itemcost").innerHTML=itemcost;
-        document.getElementById("subtotal").innerHTML=subtotal;
-        document.getElementById("tax").innerHTML=tax;
-        document.getElementById("total").innerHTML=total;
-        document.getElementById("totalpt").innerHTML="(246 points)";
-
-        try{
-            document.getElementsByClassName("qrhead")[0].style.display='none';
-            document.getElementsByClassName("qrlink")[0].style.display='none';
-            document.querySelector('#html5-qrcode-button-camera-stop').click();
-            document.getElementsByClassName("paymentFields")[0].style.display='block';
-            document.getElementsByClassName("checkDialog")[0].style.display='block';
-
-        }catch(e) {
-            console.log(e)
-        }
-    }
-
-    let htmlscanner = new Html5QrcodeScanner(
-        "my-qr-reader",
-        { fps: 10, qrbos: 250 }
-    );
-    htmlscanner.render(onScanSuccess);
 });
+function onScanSuccess(decodeText, decodeResult) {
+    const myArray = decodeText.split("_");
+    var posname = myArray[0];
+    var check = myArray[1];
+    var itemname = myArray[2];
+    var itemcost = myArray[3];
+    var subtotal = myArray[4];
+    var tax = myArray[5];
+    var total = myArray[6];
+    document.getElementById("posname").innerHTML=posname;
+    document.getElementById("checkno").innerHTML=check;
+    document.getElementById("itemname").innerHTML=itemname;
+    document.getElementById("itemcost").innerHTML=itemcost;
+    document.getElementById("subtotal").innerHTML=subtotal;
+    document.getElementById("tax").innerHTML=tax;
+    document.getElementById("total").innerHTML=total;
+    document.getElementById("totalpt").innerHTML="(246 points)";
 
+    try{
+        document.getElementsByClassName("qrhead")[0].style.display='none';
+        document.getElementsByClassName("qrlink")[0].style.display='none';
+        document.querySelector('#html5-qrcode-button-camera-stop').click();
+        document.getElementsByClassName("paymentFields")[0].style.display='block';
+        document.getElementsByClassName("checkDialog")[0].style.display='block';
+
+    }catch(e) {
+        console.log(e)
+    }
+}
 function hidePay(){
 
     var t = document.getElementById("total").innerHTML;
@@ -114,6 +110,11 @@ function topUp(){
 }
 
 function showPay(){
+    let htmlscanner = new Html5QrcodeScanner(
+        "my-qr-reader",
+        { fps: 10, qrbos: 250 }
+    );
+    htmlscanner.render(onScanSuccess);
     document.getElementsByClassName("paymentFields")[0].style.display='none';
     document.getElementsByClassName("paymentSuccess")[0].style.display='none';
     document.getElementsByClassName("qrhead")[0].style.display='block';

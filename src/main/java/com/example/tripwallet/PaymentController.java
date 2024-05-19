@@ -31,7 +31,7 @@ public class PaymentController {
         try{
             summary = twu.fetchSummary(fileName);
         }catch(Exception e){
-            //
+            e.printStackTrace();
         }
         model.put("summary",summary);
         addCookie(res, fileName);
