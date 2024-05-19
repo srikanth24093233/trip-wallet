@@ -109,7 +109,7 @@
                                         <tr>
                                             <td><i class="fas"></i> Cash  </td>
                                             <td><i class="fas twfont fwt"> {{cashUsed}} USD</i>  </td>
-                                            <td><p class="fas twfont fwt" id="cashBalance">{{cashBalance}}</p><p class="fas twfont fwt"> USD</p></td>
+                                            <td><p class="fas twfont fwt" id="cashBalance">{{cashBalance}}</p> <p class="fas twfont fwt"> USD</p></td>
                                             <td><i class="fas twfont fwt"> {{totalCashAuthorized}} USD</i></td>
                                         </tr>
                                         <tr>
@@ -301,7 +301,7 @@
                                                             <input type="radio" id="paymentCC" name="paymentMethod" value="{{cardType}}" checked>
                                                             <input type="hidden" id="paymentLast4" name="paymentLast4" value="{{lastFour}}" checked>
                                                             <label for="paymentVisa" class="ms-2">
-                                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span>
+                                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span> <span class="badge bg-primary rounded-pill"> Balance {{cashBalance}} USD</span>
                                                             </label>
                                                         </li>
                                                     {{/cashTrans}}
@@ -312,7 +312,7 @@
                                                     <li class="list-group-item d-flex align-items-center">
                                                         <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
                                                         <label for="paymentBonvoy" class="ms-2">
-                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span>
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span> <span class="badge bg-primary rounded-pill"> Balance {{pointsBalance}}</span>
                                                         </label>
                                                     </li>
 
@@ -321,7 +321,7 @@
                                                     <li class="list-group-item d-flex align-items-center">
                                                         <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
                                                         <label for="paymentBonvoy" class="ms-2">
-                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span> <span class="badge bg-primary rounded-pill"> Balance {{pointsBalance}}</span>
                                                         </label>
                                                     </li>
                                                 {{/hasNoPoints}}
