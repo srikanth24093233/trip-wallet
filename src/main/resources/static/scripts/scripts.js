@@ -50,7 +50,10 @@ function onScanSuccess(decodeText, decodeResult) {
     try{
         document.getElementsByClassName("qrhead")[0].style.display='none';
         document.getElementsByClassName("qrlink")[0].style.display='none';
-        document.querySelector('#html5-qrcode-button-camera-stop').click();
+        if(document.querySelector('#html5-qrcode-button-camera-stop')){
+            document.querySelector('#html5-qrcode-button-camera-stop').click();
+        }
+
         document.getElementsByClassName("paymentFields")[0].style.display='block';
         document.getElementsByClassName("checkDialog")[0].style.display='block';
 
@@ -69,6 +72,7 @@ function hidePay(){
     var transType = "CASH";
     var item = document.getElementById("posname").innerHTML;
     var pointsBalance = document.getElementById("pointsBalance").innerHTML;
+    var cashBalance = document.getElementById("cashBalance").innerHTML;
     if(bonRadio.checked){
         ptAmt = t*10;
         if(ptAmt > pointsBalance){
@@ -79,6 +83,10 @@ function hidePay(){
     }
     if(document.getElementById("paymentCC").checked){
         toupAmt = t;
+        if(toupAmt > cashBalance){
+            alert('Sorry not enough cash balance. Please topup cash balance');
+            return;
+        }
     }
 
     callApi("/topUp", "tripId=356784&date=May 16&transType="+transType+"&lastFour="+last4+"&cardType=visa&topUpAmount="+toupAmt+"&pointsAmount="+ptAmt+"&service=POS&item="+item)

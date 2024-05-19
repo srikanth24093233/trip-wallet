@@ -13,6 +13,22 @@ public class TopUp {
     public String item;
     public boolean pointsTras;
     public boolean cashTrans;
+    public long pointsEarned;
+
+    public void setPointsEarned(long pointsEarned) {
+        this.pointsEarned = pointsEarned;
+    }
+
+    public long getPointsEarned() {
+        if(transType != null && transType.equals("CASH") && service != null && !service.equals("WALLET")) {
+            double points = topUpAmount/10;
+            pointsEarned = (long)points;
+        }else{
+            pointsEarned = 0 ;
+        }
+
+        return pointsEarned;
+    }
 
     public void setCashTrans(boolean cashTrans) {
         this.cashTrans = cashTrans;
