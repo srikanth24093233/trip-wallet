@@ -95,3 +95,12 @@ video {
 .fwt {
     font-weight: 400;
 }
+.checkDialog {
+    display: none;
+}
+i {
+    font-style: normal;
+}
+.qrsection{
+    display: none;
+}

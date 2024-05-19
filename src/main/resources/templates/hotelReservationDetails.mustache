@@ -13,11 +13,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/qr.css" rel="stylesheet" />
-        <script src="scripts/scripts.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://unpkg.com/html5-qrcode"></script>
-    </head>
-    <body>
-        <!-- Navigation-->
+         <script src="scripts/scripts.js"></script>
+     </head>
+     <body>
+         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!"><img src="logo.png" height="90px"/></a>
@@ -41,7 +43,7 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder text-center"><i class="fa-solid fa-hotel"></i> <i class="twfont">Stacy's trip to palm springs</i></h1>
+                    <h1 class="display-4 fw-bolder text-center"><i class="fa-solid fa-hotel"></i> <i class="twfont">Stacy's trip to Palm Springs</i></h1>
                 </div>
             </div>
         </header>
@@ -49,15 +51,15 @@
         <section class="py-5">
             <div class="reservation-container d-flex flex-column align-items-center">
                 <div class="reservation-button-container d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <i class="fas fa-wallet"></i> <i class='ms-2'> <i class="twfont fcol">BONVoY T{r}IP WALLET</i>
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" id="walletModal1" data-bs-target="#walletModal">
+                        <i class="fas fa-wallet"></i> <i class='ms-2'></i> <i class="twfont fcol">BONVoY T{r}IP WALLET</i>
                     </button>
                 </div>
                 <div class="reservation-details text-start">
                     <p><i class="fa-solid fa-umbrella-beach"></i> <i class='fas ms-2'></i> <strong><i class="twfont">Vacation at JW Marriott</i></strong></p>
                     <p><i class="fas fa-calendar-alt"></i> <i class='fas ms-3'></i> <strong> <i class="twfont">16 May - 18 May</i></strong></p>
                     <p><i class="fa-solid fa-bed"></i> <i class='fas ms-2'></i> <strong> <i class="twfont">King Suite</i></strong></p>
-                    <p><i class="fas fa-dollar-sign"></i> <i class='fas ms-3'></i> <i class="twfont"><strong>Total Price:</strong> 320.50 USD</p></p>
+                    <p><i class="fas fa-dollar-sign"></i> <i class='fas ms-3'></i> <i class="twfont"><strong>Total Price:</strong> 320.50 USD</i></p>
                 </div>
             </div>
 
@@ -77,7 +79,7 @@
                                 <a href="#instruments" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Payment Source</a>
                             </li-->
                             <li class="nav-item" role="presentation">
-                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Details</a>
+                                <a href="#wallet-top-up" onclick="showWalletTopUp()" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">TopUp</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="#transactions" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Transactions</a>
@@ -88,9 +90,11 @@
                         </ul>
                         <div class="tab-content">
                             <section class="tab-pane active" id="summary">
+                                <div class="summaryDiv">
                                 <i class='fas ms-2'></i>
                                 <legend class="twfont">Trip Id: 356784</legend>
-                                <div class="container px-4 px-lg-5 mt-5">
+                                  <p>Wallet authorized with room stay. <strong>TopUp</strong> to manage trip expenses</p>
+                                <div class="px-1 px-lg-5 mt-1">
                                     <table class="table table-striped twfont">
                                         <thead>
                                         <tr>
@@ -100,62 +104,28 @@
                                             <th class="twfont fwt" scope="col">Total</th>
                                         </tr>
                                         </thead>
+                                        {{#summary}}
                                         <tbody>
                                         <tr>
-                                            <td><i class="fas"></i> Authorized Amount  </td>
-                                            <td><i class="fas twfont fwt"> 320.50 USD</i>  </td>
-                                            <td><i class="fas twfont fwt"> 579.50 USD</i></td>
-                                            <td><i class="fas twfont fwt"> 900.00 USD</i></td>
-                                        </tr>
-                                        <tr>
                                             <td><i class="fas"></i> Cash  </td>
-                                            <td><i class="fas twfont fwt"> 160.50 USD</i>  </td>
-                                            <td><i class="fas twfont fwt"> 439.50 USD</i></td>
-                                            <td><i class="fas twfont fwt"> 600.00 USD</i></td>
+                                            <td><i class="fas twfont fwt"> {{cashUsed}} USD</i>  </td>
+                                            <td><i class="fas twfont fwt"> {{cashBalance}} USD</i></td>
+                                            <td><i class="fas twfont fwt"> {{totalCashAuthorized}} USD</i></td>
                                         </tr>
                                         <tr>
                                             <td><i class="fas"></i> Points  </td>
-                                            <td><i class="fas twfont fwt"> 1600 </i>  </td>
-                                            <td><i class="fas twfont fwt"> 1400</i></td>
-                                            <td><i class="fas twfont fwt"> 3000</i></td>
+                                            <td><i class="fas twfont fwt"> {{pointsUsed}} </i>  </td>
+                                            <td><p class="fas twfont fwt" id="pointsBalance">{{pointsBalance}}</p></td>
+                                            <td><i class="fas twfont fwt"> {{totalPointsAuthorized}}</i></td>
                                         </tr>
                                         </tbody>
+                                        {{/summary}}
                                     </table>
                                     <h4 style="background-color: rgba(220, 248, 220, 0.3); padding: 5px 10px; border-radius: 5px;">
-                                        <p class="text-muted">Points Earning Potential: <i class="fas fa-star"></i> <i class="twfont">2500</i></p>
+                                        <p class="text-muted">Points Earning Potential: <i class="fas fa-star"></i> <i class="twfont">450</i></p>
                                     </h4>
                                 </div>
-                            </section>
-                            <section class="tab-pane" id="instruments">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fab fs-4 me-2 text-primary"><img src="giftcard.png"/> </i>
-                                            <div>
-                                                <p class="mb-0">Visa ending in 4567 </p>
-                                                <span class="badge bg-primary rounded-pill"> $100 Authorized</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fab fa-cc-amex fs-4 me-2 text-blue"></i>
-                                            <div>
-                                                <p class="mb-0">Amex ending in 6789 </p>
-                                                <span class="badge bg-primary rounded-pill"> $10 Authorized</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fab fa-cc-amex fs-4 me-2 text-blue"></i>
-                                            <div>
-                                                <p class="mb-0">Bonvoy Points </p>
-                                                <span class="badge bg-primary rounded-pill"> 6,000 Points Authorized</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                </div>
                             </section>
                             <section class="tab-pane" id="transactions">
                                 <div class="container px-4 px-lg-5 mt-5">
@@ -176,22 +146,24 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                        {{#summary}}
+                                            {{#transactions}}
                                             <tr>
-                                                <td>May-16</td>
-                                                <td>Resort King Guest Room</td>
-                                                <td>Stay</td>
-                                                <td>Cash</td>
-                                                <td>$160.50</td>
-                                                <td>1600</td>
+                                                <td>{{date}}</td>
+                                                <td>{{item}}</td>
+                                                <td>{{service}}</td>
+                                                <td>{{transType}}</td>
+
+                                                {{#pointsTras}}
+                                                <td>{{pointsAmount}}</td>
+                                                    {{/pointsTras}}
+                                                {{#cashTrans}}
+                                                    <td>{{topUpAmount}}</td>
+                                                {{/cashTrans}}
+                                                <td>16</td>
                                             </tr>
-                                            <tr>
-                                                <td>May-16</td>
-                                                <td>Resort King Guest Room</td>
-                                                <td>Stay</td>
-                                                <td>Points</td>
-                                                <td>1600</td>
-                                                <td>1600</td>
-                                            </tr>
+                                            {{/transactions}}
+                                        {{/summary}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -199,38 +171,54 @@
                             </section>
                             <section class="tab-pane" id="wallet-top-up">
                                 <div class="wallet-top-up-div">
+
                                 <form name="paymentForm">
                                 <fieldset class="d-flex flex-wrap">
                                     <i class='fas ms-2'></i>
                                     <legend class="twfont">Wallet Details</legend>
                                     <ul class="list-group list-group-flush">
+                                        {{#summary}}
+                                            {{#topupSummaryList}}
+                                                {{#cashTrans}}
                                         <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="visa" checked>
+                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="{{cardType}}">
+                                            <input type="hidden" id="paymentLast4" name="paymentLast4" value="{{lastFour}}" checked>
                                             <label for="paymentVisa" class="ms-2">
-                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in 4567 <span class="badge bg-primary rounded-pill"> Available 439.50 USD</span>
+                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span>
                                             </label>
                                         </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentAmex" name="paymentMethod" value="amex">
-                                            <label for="paymentAmex" class="ms-2">
-                                                <i class="fab fa-cc-amex fs-4 text-blue"></i> ending in 6789 <span class="badge bg-primary rounded-pill"> Available 439.50 USD</span>
-                                            </label>
-                                        </li>
+                                                {{/cashTrans}}
+
+                                    {{/topupSummaryList}}
+                                            {{#topupSummaryPoints}}
+
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span>
+                                                        </label>
+                                                    </li>
+
+                                            {{/topupSummaryPoints}}
+                                        {{#hasNoPoints}}
                                         <li class="list-group-item d-flex align-items-center">
                                             <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
                                             <label for="paymentBonvoy" class="ms-2">
                                                 <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
                                             </label>
                                         </li>
-                                    </ul>
+                                        {{/hasNoPoints}}
+                                        {{/summary}}
+                                </ul>
                                 </fieldset>
 
                                 <div class="mt-3 d-flex flex-column align-items-center">
-                                    <input type="text" class="form-control mb-2" placeholder="Enter the value for top-up">
+                                    <input type="text" class="form-control mb-2" id="topUpAmount" placeholder="Enter top up amount">
                                     <button type="button" onClick="walletTopUp()" class="btn btn-primary">Top Up</button>
                                 </div>
                                 </form>
                                 </div>
+
                                 <div class="container">
                                     <div class="topupsuccess">
                                         <div class="imgsuccess">
@@ -263,37 +251,83 @@
                                 </div>
                             </section>
                             <section class="tab-pane" id="pay">
+
+                                <div><a href="pos.png" class="qrlink" download="posCheck">Click to Download pos check with QR for testing</a>
+
+                                </div>
                                 <div class="container qrhead">
                                     <h1>Scan QR Codes</h1>
                                     <div class="section">
-                                        <div id="my-qr-reader">
-                                        </div>
+                                    <div id="my-qr-reader"></div>
                                     </div>
                                 </div>
                                 <div id="paymentFields" class="paymentFields">
-                                <fieldset class="d-flex flex-wrap payfs">
-                                    <legend>Total Amount : <span class="badge bg-primary rounded-pill">$100.23</span></legend>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentVisa" name="paymentMethod" value="visa" checked>
-                                            <label for="paymentVisa" class="ms-2">
-                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in 4567
-                                            </label>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentAmex" name="paymentMethod" value="amex">
-                                            <label for="paymentAmex" class="ms-2">
-                                                <i class="fab fa-cc-amex fs-4 text-blue"></i> ending in 6789
-                                            </label>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-center">
-                                            <input type="radio" id="paymentBonvoy" name="paymentMethod" value="bonvoy">
-                                            <label for="paymentBonvoy" class="ms-2">
-                                                <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill">6,000 Points</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </fieldset>
+                                    <div id='checkDialog' class="checkDialog" title='Check'>
+                                        <legend class="ms-4"><p id="posname"></p></legend>
+                                        <br/><label><p class="ms-4" id="checkno"></p></label>
+                                       <br/> <label class="ms-2"> <p id="itemname"></p></label> <label class="ms-4"></label><label class="ms-4"><p id="itemcost"></p></label>
+                                       <br/> <label class="ms-2">Subtotal</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-2"></label>
+                                        <label class="ms-4"> <p id="subtotal"></p></label>
+                                       <br/> <label class="ms-2">Tax</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"><p id="tax"></p></label>
+                                       <br/> <label class="ms-2">Total</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-2"></label>
+                                        <label class="ms-4">
+                                            <p id="total"></p></label>
+                                        <br/> <label class="ms-2">Total(Points)</label>
+                                        <label class="ms-4"></label>
+                                        <label class="ms-4">
+                                            <p id="totalpt"class="ms-2"></p></label>
+                                    </div>
+                                    <fieldset class="d-flex flex-wrap">
+                                        <i class='fas ms-2'></i>
+                                        <legend class="twfont">Payment Options</legend>
+                                        <ul class="list-group list-group-flush">
+                                            {{#summary}}
+                                                {{#topupSummaryList}}
+
+                                                    {{#cashTrans}}
+                                                        <li class="list-group-item d-flex align-items-center">
+                                                            <input type="radio" id="paymentCC" name="paymentMethod" value="{{cardType}}" checked>
+                                                            <input type="hidden" id="paymentLast4" name="paymentLast4" value="{{lastFour}}" checked>
+                                                            <label for="paymentVisa" class="ms-2">
+                                                                <i class="fab fa-cc-visa fs-4 text-primary"></i> ending in  {{lastFour}} <span class="badge bg-primary rounded-pill"> Authorized {{authorized}} USD</span>
+                                                            </label>
+                                                        </li>
+                                                    {{/cashTrans}}
+
+                                                {{/topupSummaryList}}
+                                                {{#topupSummaryPoints}}
+
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Authorized {{pointsAuthorized}} Points</span>
+                                                        </label>
+                                                    </li>
+
+                                                {{/topupSummaryPoints}}
+                                                {{#hasNoPoints}}
+                                                    <li class="list-group-item d-flex align-items-center">
+                                                        <input type="radio" id="paymentB" name="paymentMethod" value="bonvoy">
+                                                        <label for="paymentBonvoy" class="ms-2">
+                                                            <i class="fab fs-4 text-blue"></i>Bonvoy Points  <span class="badge bg-primary rounded-pill"> Available 1400 Points</span>
+                                                        </label>
+                                                    </li>
+                                                {{/hasNoPoints}}
+                                            {{/summary}}
+                                        </ul>
+                                    </fieldset>
 
                                     <div class="mt-3 d-flex flex-column">
                                         <button type="button" onclick="hidePay()" class="btn btn-primary">Pay</button><div class="loader"></div>
@@ -312,7 +346,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Settle</button>
                     </div>
                 </div>
                 </div>

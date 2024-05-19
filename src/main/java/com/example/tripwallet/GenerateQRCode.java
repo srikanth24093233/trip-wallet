@@ -20,8 +20,8 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 public class GenerateQRCode {
 
     public void generate() throws WriterException, IOException {
-        String qrCodeText = "123456_11111_5999";
-        String filePath = "JD.png";
+        String qrCodeText = "Rockwood Grill_Check#131_1 Fish & Chips_23.23_23.23_1.39_24.62";
+        String filePath = "pos.png";
         int size = 125;
         String fileType = "png";
         File qrFile = new File(filePath);
