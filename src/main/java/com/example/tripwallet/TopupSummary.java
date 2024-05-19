@@ -8,15 +8,6 @@ public class TopupSummary {
     private long pointsAuthorized;
     private boolean pointsTrans;
     private boolean cashTrans;
-    private long pointsBalance;
-
-    public void setPointsBalance(long pointsBalance) {
-        this.pointsBalance = pointsBalance;
-    }
-
-    public long getPointsBalance() {
-        return pointsBalance;
-    }
 
     public boolean isCashTrans() {
         return cashTrans;
